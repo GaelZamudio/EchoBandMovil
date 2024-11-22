@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- Color de fondo del fragmento -->
+    <corners android:radius="20dp"/> <!-- Bordes redondeados -->
+    <elevation android:value="10dp" /> <!-- Sombra -->
+</shape>
