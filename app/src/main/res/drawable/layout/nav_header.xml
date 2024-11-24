@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="198dp"
+    android:layout_height="230dp"
+    android:gravity="bottom"
+    android:padding="16dp"
+    android:background="#CCE2EB"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_gravity="center"
+        android:layout_height="90dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/juanitobn"/>
+
+    <TextView
+        android:layout_width="90dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Juanito Pérez"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textColor="#414141"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="ElMasCrack"
+        android:layout_gravity="center"
+        android:textColor="#414141"
+        android:layout_marginTop="5dp"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>

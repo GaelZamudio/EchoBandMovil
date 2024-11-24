@@ -13,8 +13,11 @@
         android:theme="@style/Theme.EchoBandApp"
         tools:targetApi="31">
         <activity
-            android:name=".Entrenamiento"
+            android:name=".Adaptador"
             android:exported="false" />
+        <activity
+            android:name=".Barra"
+            android:exported="true" />
         <activity
             android:name=".LogIn"
             android:exported="false" />

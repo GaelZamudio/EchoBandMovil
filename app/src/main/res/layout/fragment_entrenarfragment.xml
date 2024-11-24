@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentEntrenamiento">
+
+    <!-- Texto de bienvenida -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hola de nuevo, Juanito"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="16dp" />
+
+    <!-- ListView para mostrar imágenes y textos -->
+    <ListView
+        android:id="@+id/lvEntrenamientos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:padding="8dp" />
+</FrameLayout>

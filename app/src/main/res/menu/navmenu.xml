@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_entrenar"
+            android:icon="@drawable/entrenarbn"
+            android:title="Entrenar" />
+
+        <item
+            android:id="@+id/nav_estadisticas"
+            android:icon="@drawable/estabn"
+            android:title="Estadisticas"/>
+
+        <item
+            android:id="@+id/nav_amigos"
+            android:icon="@drawable/amigosbn"
+            android:title="Amigos"/>
+
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/perfilbn"
+            android:title="Perfil"/>
+
+        <item
+            android:id="@+id/nav_liga"
+            android:icon="@drawable/ligabn"
+            android:title="Liga"/>
+
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/configbn"
+            android:title="Configuracion"/>
+
+        <item
+            android:id="@+id/nav_cerrar"
+            android:icon="@drawable/cerrarbn"
+            android:title="Cerrar Sesion"/>
+
+    </group>
+
+
+</menu>

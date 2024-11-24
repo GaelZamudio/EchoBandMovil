@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profile_photo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/juanitobn"
+                android:contentDescription="Agregar foto"
+                android:background="@drawable/circle_background"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juanito Pérez"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ElMasCrack"
+                android:textColor="#888"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:id="@+id/name_input"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_background"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CUENTA"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:id="@+id/email_input"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_background"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE DE USUARIO"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:id="@+id/username_input"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_background"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEGURIDAD"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="4dp" />
+
+            <Switch
+                android:id="@+id/logout_switch"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Cerrar sesión al salir"
+                android:shadowColor="#22566C"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <!-- Configuración de notificaciones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="NOTIFICACIONES"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp" />
+
+            <Switch
+                android:id="@+id/training_reminders_switch"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Recordatorios de entrenamiento"
+                android:textColor="#000" />
+
+            <Switch
+                android:id="@+id/general_notifications_switch"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones"
+                android:textColor="#000" />
+
+            <Switch
+                android:id="@+id/light_theme_switch"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tema Claro"
+                android:textColor="#000" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
