@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EchoBandApp"
         tools:targetApi="31">
+
         <activity
             android:name=".Adaptador"
             android:exported="false" />

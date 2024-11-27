@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentSimonDice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:text="Instrucciones" />
+
+        <TextView
+            android:id="@+id/tv_mensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text=" "
+            android:textColor="@color/black" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rowCount="2"
+            android:columnCount="3"
+            android:alignmentMode="alignMargins"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:useDefaultMargins="true">
+
+            <ImageButton
+                android:id="@+id/ib_arrow_up"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:src="@drawable/up_arrow"
+                android:background="@null" />
+
+            <ImageButton
+                android:id="@+id/ib_arrow_down"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:src="@drawable/down_arrow"
+                android:background="@null" />
+
+            <ImageButton
+                android:id="@+id/ib_arrow_left"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:src="@drawable/left_arrow"
+                android:background="@null" />
+
+            <ImageButton
+                android:id="@+id/ib_arrow_right"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:src="@drawable/right_arrow"
+                android:background="@null" />
+        </GridLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

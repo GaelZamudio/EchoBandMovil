@@ -1,14 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentEstadisticas">
+    android:background="#F7F7F7">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="16dp">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/juanitobn"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juanito Pérez"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAlias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ElMasCrack"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="#888888" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntos totales"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <ImageView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvEjercicios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ejercicios realizados"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Focalización Visual"
+                android:textSize="14sp"
+                android:layout_weight="1" />
+
+            <ProgressBar
+                android:id="@+id/progressFocalizacionVisual"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:progressTint="#7C3DD5"
+                android:progress="81"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvFocalizacionVisualPorcentaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="81%"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desafíos con amigos"
+                android:textSize="14sp"
+                android:layout_weight="1" />
+
+            <ProgressBar
+                android:id="@+id/progressDesafios"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:progress="63"
+                android:progressTint="#D83CE3"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvDesafiosPorcentaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="63%"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Progreso de Focalización General -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Focalización General"
+                android:textSize="14sp"
+                android:layout_weight="1" />
+
+            <ProgressBar
+                android:id="@+id/progressFocalizacionGeneral"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:progressTint="#3DD568"
+                android:layout_weight="3"
+                android:progress="52"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvFocalizacionGeneralPorcentaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="52%"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Progreso de Concentración Real -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Concentración Real"
+                android:textSize="14sp"
+                android:layout_weight="1" />
+
+            <ProgressBar
+                android:id="@+id/progressConcentracion"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:progressTint="#3DA0D5"
+                android:progress="47"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvConcentracionPorcentaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="47%"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

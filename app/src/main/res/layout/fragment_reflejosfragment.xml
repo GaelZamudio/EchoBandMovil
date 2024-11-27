@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".FragmentReflejos">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRESIONA 'Estoy listo' EN CUANTO ESTÉS LISTO"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="100dp" />
+
+        <Button
+            android:id="@+id/btn_listo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Estoy listo"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/back_card"
+            android:layout_marginTop="40dp" />
+
+        <View
+            android:id="@+id/v_circulo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/gris" />
+
+        <Button
+            android:id="@+id/btn_presiona"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="Presionar"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/rojo"
+            android:layout_marginTop="40dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Tiempo de reacción:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

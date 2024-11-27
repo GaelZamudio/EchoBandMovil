@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Tu concentración ha tenido una caída drástica!"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="50dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver al inicio"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#4DD0E1"
+            android:layout_marginHorizontal="8dp"
+            android:id="@+id/btn_volver"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inténtalo de nuevo"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#1E88E5"
+            android:layout_marginHorizontal="8dp"
+            android:id="@+id/btn_denuevo"/>
+
+    </LinearLayout>
+
+</LinearLayout>
