@@ -49,8 +49,7 @@
                 android:layout_height="100dp"
                 android:layout_row="0"
                 android:layout_column="1"
-                android:src="@drawable/up_arrow"
-                android:background="@null" />
+                android:background="@drawable/up_arrow"/>
 
             <ImageButton
                 android:id="@+id/ib_arrow_down"
@@ -58,8 +57,7 @@
                 android:layout_height="100dp"
                 android:layout_row="1"
                 android:layout_column="1"
-                android:src="@drawable/down_arrow"
-                android:background="@null" />
+                android:background="@drawable/down_arrow" />
 
             <ImageButton
                 android:id="@+id/ib_arrow_left"
@@ -67,8 +65,7 @@
                 android:layout_height="100dp"
                 android:layout_row="1"
                 android:layout_column="0"
-                android:src="@drawable/left_arrow"
-                android:background="@null" />
+                android:background="@drawable/left_arrow"/>
 
             <ImageButton
                 android:id="@+id/ib_arrow_right"
@@ -76,9 +73,19 @@
                 android:layout_height="100dp"
                 android:layout_row="1"
                 android:layout_column="2"
-                android:src="@drawable/right_arrow"
-                android:background="@null" />
+                android:background="@drawable/right_arrow"/>
         </GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Ronda 1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/tv_ronda"/>
 
     </LinearLayout>
 

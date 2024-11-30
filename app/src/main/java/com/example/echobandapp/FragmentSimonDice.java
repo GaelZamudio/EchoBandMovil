@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class FragmentSimonDice extends Fragment {
 
-    private TextView messageText;
+    private TextView messageText, rondaText;
     private ImageButton arrowUp, arrowDown, arrowLeft, arrowRight;
     private List<String> sequence = new ArrayList<>();
     private List<String> userInput = new ArrayList<>();
@@ -32,6 +32,7 @@ public class FragmentSimonDice extends Fragment {
         View view = inflater.inflate(R.layout.fragment_simondicefragment, container, false);
 
         messageText = view.findViewById(R.id.tv_mensaje);
+        rondaText = view.findViewById(R.id.tv_ronda);
         arrowUp = view.findViewById(R.id.ib_arrow_up);
         arrowDown = view.findViewById(R.id.ib_arrow_down);
         arrowLeft = view.findViewById(R.id.ib_arrow_left);
@@ -50,6 +51,7 @@ public class FragmentSimonDice extends Fragment {
     private void startGame() {
         sequence.clear();
         currentRound = 1;
+        rondaText.setText("1");
         nextRound();
     }
 
@@ -57,6 +59,7 @@ public class FragmentSimonDice extends Fragment {
         userInput.clear();
         currentInputIndex = 0;
         messageText.setText("");
+        rondaText.setText("Ronda: " + currentRound);
         generateSequence();
 
         // Retraso inicial de 4 segundos antes de mostrar la primera instrucción
