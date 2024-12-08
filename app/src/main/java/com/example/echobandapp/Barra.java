@@ -1,5 +1,6 @@
 package com.example.echobandapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -55,9 +56,10 @@ public class Barra extends AppCompatActivity implements
         if (itemId == NAV_AMIGOS)
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentAmigos()).commit();
         else
-            if (itemId == NAV_CERRAR)
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentCerrarSesion()).commit();
-            else
+            if (itemId == NAV_CERRAR) {
+                Intent intentito = new Intent(this, SignUp.class);
+                startActivity(intentito);
+            } else
                 if (itemId == NAV_CONFIG)
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentConfiguracion()).commit();
                 else
