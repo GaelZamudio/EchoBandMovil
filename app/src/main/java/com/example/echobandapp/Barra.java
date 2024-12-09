@@ -1,9 +1,13 @@
 package com.example.echobandapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +15,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import org.w3c.dom.Text;
 
 public class Barra extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener {
+        NavigationView.OnNavigationItemSelectedListener, FragmentConfiguracion.OnPerfilUpdatedListener {
 
     private static final int NAV_AMIGOS = R.id.nav_amigos;
     private static final int NAV_CERRAR = R.id.nav_cerrar;
@@ -23,6 +28,7 @@ public class Barra extends AppCompatActivity implements
     private static final int NAV_LIGA = R.id.nav_liga;
     private static final int NAV_PERFIL = R.id.nav_perfil;
     private DrawerLayout drawerLayout;
+    TextView tvNombre, tvCorreo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,8 @@ public class Barra extends AppCompatActivity implements
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -45,6 +53,18 @@ public class Barra extends AppCompatActivity implements
             navigationView.setCheckedItem(R.id.nav_entrenar);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentEntrenamiento()).commit();
         }
+
+        //OBTENEMOS LAS PREFS
+        SharedPreferences preferences = getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+        int id_usuario = preferences.getInt("id_usuario", 0);
+        String nombre = preferences.getString("nombre", "");
+        String correo = preferences.getString("correo", "");
+
+        tvNombre = headerView.findViewById(R.id.tvNombre);
+        tvNombre.setText(nombre);
+
+        tvCorreo = headerView.findViewById(R.id.tvCorreo);
+        tvCorreo.setText(correo);
     }
 
 
@@ -75,5 +95,13 @@ public class Barra extends AppCompatActivity implements
                                 if (itemId == NAV_PERFIL)
                                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentPerfil()).commit();
         return true;
+    }
+
+    //Estamos sobreescribiendo el método de la interfaz que se declara en PerfilFragment
+    @Override
+    public void onPerfilUpdated(String nuevoNombre, String nuevoCorreo) {
+        // Actualizamos los tvs de la barra de navegación
+        tvNombre.setText(nuevoNombre);
+        tvCorreo.setText(nuevoCorreo);
     }
 }

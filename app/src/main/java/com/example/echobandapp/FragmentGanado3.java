@@ -1,5 +1,7 @@
 package com.example.echobandapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,18 @@ public class FragmentGanado3 extends Fragment {
                 transaction.commit();
             }
         });
+
+        //OBTENEMOS LAS PREFS
+        SharedPreferences preferences = getActivity().getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+
+        int id_usuario = preferences.getInt("id_usuario", 0);
+        String nombre = preferences.getString("nombre", "");
+        String correo = preferences.getString("correo", "");
+
+        //INICIAMOS LA BASE
+        Base base = new Base(getContext(), "EchoBandDB", null, 1);
+        base.insertarLogro(id_usuario, "Obediente");
+        base.actualizarRacha(id_usuario);
 
         return rootView;
     }

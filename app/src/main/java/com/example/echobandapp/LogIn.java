@@ -22,6 +22,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
+        SharedPreferences sharedPreferences = getSharedPreferences("EchoBandPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
 
         fragmentLogIn = findViewById(R.id.logIn);
 

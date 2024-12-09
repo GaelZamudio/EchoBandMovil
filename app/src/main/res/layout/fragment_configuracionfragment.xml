@@ -123,7 +123,6 @@
                 android:layout_marginBottom="15dp"
                 android:textColor="@color/white"
                 android:text="Guardar Cambios"
-                android:enabled="false"
                 android:backgroundTint="#22566C"
                 android:id="@+id/btnGuardarCambios"
                 android:layout_marginRight="5dp"/>

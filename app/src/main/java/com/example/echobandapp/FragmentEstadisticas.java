@@ -1,10 +1,13 @@
 package com.example.echobandapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,7 +19,21 @@ public class FragmentEstadisticas extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_estadisticasfragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_estadisticasfragment, container, false);
+
+        TextView tvNombre = view.findViewById(R.id.tvNombre);
+        TextView tvCorreo = view.findViewById(R.id.tvCorreo);
+
+        //OBTENEMOS LAS PREFS
+        SharedPreferences preferences = getActivity().getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+        int id_usuario = preferences.getInt("id_usuario", 0);
+        String nombre = preferences.getString("nombre", "");
+        String correo = preferences.getString("correo", "");
+
+        tvNombre.setText(nombre);
+        tvCorreo.setText(correo);
+
+        return view;
     }
 
     @Override

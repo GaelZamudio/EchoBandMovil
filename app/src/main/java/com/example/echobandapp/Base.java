@@ -2,6 +2,7 @@ package com.example.echobandapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.text.SimpleDateFormat;
@@ -29,7 +30,9 @@ public class Base extends SQLiteOpenHelper {
         registro.put("id_usuario", id_usuario);
         registro.put("titulo", titulo);
         base.insert("Logro", null, registro);
+        base.close();
     }
+
 
     public void insertarEntrenamiento(int id_usuario, int concentracion_promedio, String tipo_ejercicio) {
         SQLiteDatabase base = this.getWritableDatabase();
@@ -44,6 +47,7 @@ public class Base extends SQLiteOpenHelper {
         registro.put("tipo_ejercicio", tipo_ejercicio);
 
         base.insert("Entrenamiento", null, registro);
+        base.close();
     }
 
     public void actualizarRacha(int id_usuario) {
@@ -68,6 +72,7 @@ public class Base extends SQLiteOpenHelper {
             String updateQuery = "UPDATE Usuario SET racha = racha + 1 WHERE id_usuario = ?";
             base.execSQL(updateQuery, new Object[]{id_usuario});
         }
+        base.close();
     }
 
     public int obtenerPuntos(int id_usuario) {
@@ -82,6 +87,7 @@ public class Base extends SQLiteOpenHelper {
             }
         }
 
+        base.close();
         return puntos;
     }
 
@@ -96,6 +102,7 @@ public class Base extends SQLiteOpenHelper {
                 racha = cursor.getInt(0);
             }
         }
+        base.close();
 
         return racha;
     }
@@ -111,6 +118,7 @@ public class Base extends SQLiteOpenHelper {
                 cantidad = cursor.getInt(0);
             }
         }
+        base.close();
 
         return cantidad;
     }
@@ -134,8 +142,24 @@ public class Base extends SQLiteOpenHelper {
             }
         }
 
+        base.close();
         return titulos;
     }
+
+    public void actualizarUsuario(int id_usuario, String nuevoNombre, String nuevoCorreo, String nuevaContrasena) {
+        SQLiteDatabase base = this.getWritableDatabase();
+        ContentValues registro = new ContentValues();
+
+        // Insertamos los nuevos valores para los campos: nombre, correo y contraseña
+        registro.put("nombre", nuevoNombre);
+        registro.put("correo", nuevoCorreo);
+        registro.put("contrasena", nuevaContrasena);
+
+        // Realizamos la actualización en la tabla Usuario utilizando el id del usuario
+        base.update("Usuario", registro, "id_usuario = ?", new String[]{String.valueOf(id_usuario)});
+        base.close();
+    }
+
 
 
     @Override

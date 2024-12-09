@@ -25,6 +25,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.sign_up);
+        SharedPreferences sharedPreferences = getSharedPreferences("EchoBandPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
 
         fragmentSignUp = findViewById(R.id.signUp);
 
