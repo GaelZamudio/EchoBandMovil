@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentSignUp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="25dp"
+        android:layout_margin="32dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Echo te da la bienvenida"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/incorrecto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text=""
+                android:textStyle="bold|italic"
+                android:textColor="#317B9A"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Nombre de usuario"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:hint="Tu nombre"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/etNombreSignUp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Correo"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:hint="Tu correo"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/etCorreoSignUp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Contraseña"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:layout_marginLeft="20dp"
+                android:inputType="textPassword"
+                android:hint="************"
+                android:id="@+id/etContrasenaSignUp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:text="Crear Cuenta"
+                android:backgroundTint="#22566C"
+                android:id="@+id/btnCrearCuenta"
+                android:layout_marginRight="5dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="20dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="¿Ya tienes una cuenta? "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#317B9A"
+                    android:textStyle="bold"
+                    android:text="Inicia sesión"
+                    android:id="@+id/tvIniciaSesion"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

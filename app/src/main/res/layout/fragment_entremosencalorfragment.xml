@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/white"
+             tools:context=".FragmentEntremosEnCalor">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.- Entremos en Calor"
+                android:textSize="25dp"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="50dp"
+                android:paddingVertical="20dp"
+                android:elevation="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="14dp"
+                android:background="@drawable/rounded_background" >
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/img_1"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:maxWidth="600dp"
+                        android:layout_height="wrap_content"
+                        android:text="Comencemos con un primer ejercicio para que aprendas a utilizar EchoBand. Tendrás que completar un memorama. Dispondrás de un minuto para realizar este ejercicio."
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal" >
+
+                <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/img_2"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Este es un ejercicio de memorización."
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal" >
+
+                <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/img_3"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dificultad: Principiante."
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Estás listo para comenzar?"
+                android:textSize="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="50dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Iniciar ejercicio"
+                android:textSize="20dp"
+                android:layout_marginTop="45dp"
+                android:backgroundTint="#428BAA"
+                android:id="@+id/botoon" />
+
+    </LinearLayout>
+</FrameLayout>

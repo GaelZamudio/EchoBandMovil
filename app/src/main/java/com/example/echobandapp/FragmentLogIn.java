@@ -1,12 +1,11 @@
 package com.example.echobandapp;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 public class FragmentLogIn extends Fragment {
 
@@ -14,9 +13,8 @@ public class FragmentLogIn extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = null;
-        view = inflater.inflate(R.layout.fragment_log_in, container, false);
+        view = inflater.inflate(R.layout.fragment_loginfragment, container, false);
 
         return view;
     }
-
 }

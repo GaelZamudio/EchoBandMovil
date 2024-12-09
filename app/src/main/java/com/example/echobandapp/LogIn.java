@@ -11,34 +11,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class LogIn extends AppCompatActivity implements View.OnClickListener {
-View fragmentLogIn;
-EditText etNombreLogIn, etContrasenaLogIn;
-Button btnIniciarSesion;
-TextView tvCrearCuenta, tvIncorrecto;
+    View fragmentLogIn;
+    EditText etNombreLogIn, etContrasenaLogIn;
+    Button btnIniciarSesion;
+    TextView tvCrearCuenta, tvIncorrecto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.log_in);
 
-        //Encontramos el fragmento
         fragmentLogIn = findViewById(R.id.logIn);
 
-        //Encontramos los elementos
         etNombreLogIn = fragmentLogIn.findViewById(R.id.etNombreLogIn);
         etContrasenaLogIn = fragmentLogIn.findViewById(R.id.etContrasenaLogIn);
         btnIniciarSesion = fragmentLogIn.findViewById(R.id.btnIniciarSesion);
         tvCrearCuenta = fragmentLogIn.findViewById(R.id.tvCrearCuenta);
         tvIncorrecto = fragmentLogIn.findViewById(R.id.tvIncorrecto);
 
-        //Establecemos los listeners
         btnIniciarSesion.setOnClickListener(this);
         tvCrearCuenta.setOnClickListener(this);
     }
@@ -54,23 +46,21 @@ TextView tvCrearCuenta, tvIncorrecto;
             if (etNombreLogIn.getText().toString().isEmpty() || etContrasenaLogIn.getText().toString().isEmpty()){
                 Toast.makeText(this, "Por favor, completa ambos campos", Toast.LENGTH_SHORT).show();
             } else {
-                //Obtenemos los datos ingresados
+
                 String nombre = etNombreLogIn.getText().toString().trim();
                 String contrasena = etContrasenaLogIn.getText().toString().trim();
-
-                //Hacemos la consulta
 
                 Base admin = new Base(this, "EchoBandDB", null, 1);
                 SQLiteDatabase base = admin.getWritableDatabase();
 
-                //Verificamos si el usuario está registrado
                 Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE nombre = ? AND contrasena = ?", new String[]{nombre, contrasena});
                 if (cursor.moveToFirst()){
                     Toast.makeText(this, "Sesión iniciada correctamente", Toast.LENGTH_SHORT).show();
-                    //Guardamos los datos principales en preferences
                     guardarDatos(nombre, contrasena);
-                    Intent intent = new Intent(this, Entrenamiento.class);
+
+                    Intent intent = new Intent(LogIn.this, Barra.class);
                     startActivity(intent);
+
                 } else {
                     tvIncorrecto.setText("Nombre o contraseña incorrectos");
                 }
@@ -103,4 +93,5 @@ TextView tvCrearCuenta, tvIncorrecto;
             editor.apply();
         }
     }
+
 }

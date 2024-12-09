@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maestro"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp" />
+
+        <ImageView
+            android:id="@+id/ivFotoPerfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/juanitobn"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tvNombreUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Juanito Pérez"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvAliasUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ElMasCrack"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnLiga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2480 PUNTOS"
+                android:backgroundTint="#81D4FA"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnRacha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RACHA DE 8 SEMANAS"
+                android:backgroundTint="#81D4FA"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnLogros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="123/300 LOGROS"
+                android:backgroundTint="#81D4FA"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTituloLogros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGROS"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <ListView
+            android:id="@+id/listViewLogros"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+</ScrollView>
