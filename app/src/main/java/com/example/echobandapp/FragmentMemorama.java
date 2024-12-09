@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +25,7 @@ public class FragmentMemorama extends Fragment {
     private TextView timeRemainingLabel;
     private GridLayout memoryGrid;
     private ImageView[] imageViews;
+    private BluetoothHelper bluetoothHelper;
     private int[] frontImages = {
             R.drawable.entremosencalorentrenar19, R.drawable.entremosencalorentrenar19,
             R.drawable.entremosencalorentrenar17, R.drawable.entremosencalorentrenar17,
@@ -50,6 +53,14 @@ public class FragmentMemorama extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflar el diseño del fragmento
         View view = inflater.inflate(R.layout.fragment_memoramafragment, container, false);
+
+        try {
+            bluetoothHelper.connectToDevice("McQueen");
+            bluetoothHelper.startListening();
+            Toast.makeText(getContext(), "Conexión iniciada", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(getContext(), "Error al conectar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
         // Inicializar las vistas
         timeRemainingLabel = view.findViewById(R.id.tv_timer);
