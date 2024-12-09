@@ -27,6 +27,7 @@ public class FragmentPerfil extends Fragment {
         ListView listView = rootView.findViewById(R.id.listViewLogros);
 
         ArrayList<String> logros = new ArrayList<>();
+        //AQUÍ IMPLEMENTA LA LÓGICA PARA OBTENER LOS LOGROS QUE HA OBTENIDO EL USUARIO CON UN FOR
         logros.add("Primer Entrenamiento");
         logros.add("Concentrado");
         logros.add("Principiante");
