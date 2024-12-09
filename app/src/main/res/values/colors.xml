@@ -6,4 +6,6 @@
     <color name="back_card">#304FFE</color>
     <color name="rojo">#FF1744</color>
     <color name="gris">#B3B3B3</color>
+
+    <color name="my_light_primary">#317B9A</color>
 </resources>

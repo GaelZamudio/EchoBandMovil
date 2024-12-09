@@ -19,15 +19,15 @@
 
             <ImageView
                 android:id="@+id/profile_photo"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/juanitobn"
                 android:contentDescription="Agregar foto"
                 android:background="@drawable/circle_background"
                 android:padding="8dp" />
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Juanito Pérez"
@@ -37,12 +37,19 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/tvCorreo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ElMasCrack"
                 android:textColor="#888"
                 android:textSize="14sp" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar foto"
+                    android:backgroundTint="@color/my_light_primary"
+                    android:id="@+id/btnCambiarFoto"/>
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +72,7 @@
 
             <EditText
                 android:layout_marginLeft="10dp"
-                android:id="@+id/name_input"
+                android:id="@+id/nombre_input"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_background"
@@ -75,7 +82,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CUENTA"
+                android:text="CORREO"
                 android:textColor="#666"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
@@ -83,7 +90,7 @@
 
             <EditText
                 android:layout_marginLeft="10dp"
-                android:id="@+id/email_input"
+                android:id="@+id/correo_input"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_background"
@@ -93,7 +100,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NOMBRE DE USUARIO"
+                android:text="CONTRASEÑA"
                 android:textColor="#666"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
@@ -101,8 +108,9 @@
 
             <EditText
                 android:layout_marginLeft="10dp"
-                android:id="@+id/username_input"
+                android:id="@+id/contrasenaInput"
                 android:layout_width="350dp"
+                android:inputType="textPassword"
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_background"
                 android:padding="8dp" />
@@ -120,7 +128,7 @@
                 android:id="@+id/btnGuardarCambios"
                 android:layout_marginRight="5dp"/>
         </LinearLayout>
-
+        <!--SEGURIDAD Y NOTIFICACIONES
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -149,7 +157,6 @@
                 android:textColor="#000" />
         </LinearLayout>
 
-        <!-- Configuración de notificaciones -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -195,5 +202,6 @@
                 android:text="Tema Claro"
                 android:textColor="#000" />
         </LinearLayout>
+            -->
     </LinearLayout>
 </ScrollView>

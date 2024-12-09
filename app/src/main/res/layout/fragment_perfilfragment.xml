@@ -31,15 +31,6 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tvCambiarFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CAMBIAR FOTO"
-            android:textSize="12sp"
-            android:textColor="#888888"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
             android:id="@+id/tvNombreUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +58,7 @@
                 android:id="@+id/btnLiga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="LIGA DIAMANTE (12º)"
+                android:text="2480 PUNTOS"
                 android:backgroundTint="#81D4FA"
                 android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
@@ -105,8 +96,5 @@
             android:layout_height="240dp"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp" />
-
-
-
     </LinearLayout>
 </ScrollView>

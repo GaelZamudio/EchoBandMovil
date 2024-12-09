@@ -18,7 +18,7 @@
             android:layout_width="128dp"
             android:layout_height="137dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:src="@drawable/img" />
 
         <fragment

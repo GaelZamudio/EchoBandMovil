@@ -76,7 +76,7 @@ public class FragmentMemorama extends Fragment {
 
         // Obtener las dimensiones de pantalla
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int cardSize = metrics.widthPixels / 2 - 200;
+        int cardSize = metrics.widthPixels / 5 ;
 
         for (int i = 0; i < frontImages.length; i++) {
             final int index = i;
@@ -86,7 +86,7 @@ public class FragmentMemorama extends Fragment {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = cardSize;
             params.height = cardSize;
-            params.setMargins(5, 10, 5, 10);
+            params.setMargins(cardSize/16, 10, cardSize/16, 10);
             imageView.setLayoutParams(params);
 
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
