@@ -20,18 +20,34 @@ public class Base extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Usuario(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, nombre text UNIQUE, correo text UNIQUE, contrasena text, puntos INTEGER DEFAULT 0, racha INTEGER DEFAULT 0);");
-        db.execSQL("CREATE TABLE Logro(id_logro INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, titulo text UNIQUE, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario));");
+        db.execSQL("CREATE TABLE Logro(id_logro INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, titulo text, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario));");
         db.execSQL("CREATE TABLE Entrenamiento(id_entrenamiento INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, fecha DATE, concentracion_promedio INTEGER, tipo_ejercicio TEXT, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario));");
     }
 
-    public void insertarLogro(int id_usuario, String titulo){
+    public void insertarLogro(int id_usuario, String titulo) {
         SQLiteDatabase base = this.getWritableDatabase();
-        ContentValues registro = new ContentValues();
-        registro.put("id_usuario", id_usuario);
-        registro.put("titulo", titulo);
-        base.insert("Logro", null, registro);
-        base.close();
+
+        // Verificar si ya existe un logro con el mismo id_usuario y título
+        String query = "SELECT COUNT(*) FROM Logro WHERE id_usuario = ? AND titulo = ?";
+        String[] args = {String.valueOf(id_usuario), titulo};
+        boolean existeLogro = false;
+
+        try (android.database.Cursor cursor = base.rawQuery(query, args)) {
+            if (cursor.moveToFirst()) {
+                existeLogro = cursor.getInt(0) > 0;  // Si el conteo es mayor a 0, existe el logro
+            }
+        }
+
+        // Si no existe, insertamos el nuevo logro
+        if (!existeLogro) {
+            ContentValues registro = new ContentValues();
+            registro.put("id_usuario", id_usuario);
+            registro.put("titulo", titulo);
+            base.insert("Logro", null, registro);
+        }
+
     }
+
 
 
     public void insertarEntrenamiento(int id_usuario, int concentracion_promedio, String tipo_ejercicio) {
@@ -47,7 +63,6 @@ public class Base extends SQLiteOpenHelper {
         registro.put("tipo_ejercicio", tipo_ejercicio);
 
         base.insert("Entrenamiento", null, registro);
-        base.close();
     }
 
     public void actualizarRacha(int id_usuario) {
@@ -72,7 +87,6 @@ public class Base extends SQLiteOpenHelper {
             String updateQuery = "UPDATE Usuario SET racha = racha + 1 WHERE id_usuario = ?";
             base.execSQL(updateQuery, new Object[]{id_usuario});
         }
-        base.close();
     }
 
     public int obtenerPuntos(int id_usuario) {
@@ -87,8 +101,24 @@ public class Base extends SQLiteOpenHelper {
             }
         }
 
-        base.close();
         return puntos;
+    }
+
+    public void actualizarPuntos(int id_usuario, int puntosAGrabar) {
+        SQLiteDatabase base = this.getWritableDatabase();
+
+        // Obtener los puntos actuales del usuario
+        int puntosActuales = obtenerPuntos(id_usuario);
+
+        // Sumar los puntos nuevos a los puntos actuales
+        int nuevosPuntos = puntosActuales + puntosAGrabar;
+
+        // Actualizar los puntos en la base de datos
+        ContentValues registro = new ContentValues();
+        registro.put("puntos", nuevosPuntos);
+
+        base.update("Usuario", registro, "id_usuario = ?", new String[]{String.valueOf(id_usuario)});
+
     }
 
     public int obtenerRacha(int id_usuario) {
@@ -102,7 +132,6 @@ public class Base extends SQLiteOpenHelper {
                 racha = cursor.getInt(0);
             }
         }
-        base.close();
 
         return racha;
     }
@@ -118,7 +147,6 @@ public class Base extends SQLiteOpenHelper {
                 cantidad = cursor.getInt(0);
             }
         }
-        base.close();
 
         return cantidad;
     }
@@ -142,7 +170,6 @@ public class Base extends SQLiteOpenHelper {
             }
         }
 
-        base.close();
         return titulos;
     }
 
@@ -157,7 +184,6 @@ public class Base extends SQLiteOpenHelper {
 
         // Realizamos la actualización en la tabla Usuario utilizando el id del usuario
         base.update("Usuario", registro, "id_usuario = ?", new String[]{String.valueOf(id_usuario)});
-        base.close();
     }
 
 
