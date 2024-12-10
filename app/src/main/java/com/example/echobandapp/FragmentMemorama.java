@@ -1,5 +1,8 @@
 package com.example.echobandapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
@@ -9,20 +12,25 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class FragmentMemorama extends Fragment {
 
+    private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
     private TextView timeRemainingLabel;
     private GridLayout memoryGrid;
     private ImageView[] imageViews;
+    private BluetoothHelper bluetoothHelper;
     private int[] frontImages = {
             R.drawable.entremosencalorentrenar19, R.drawable.entremosencalorentrenar19,
             R.drawable.entremosencalorentrenar17, R.drawable.entremosencalorentrenar17,
@@ -51,17 +59,55 @@ public class FragmentMemorama extends Fragment {
         // Inflar el diseño del fragmento
         View view = inflater.inflate(R.layout.fragment_memoramafragment, container, false);
 
+        // Inicializar el BluetoothHelper
+        bluetoothHelper = new BluetoothHelper(getContext(), null);
+
         // Inicializar las vistas
         timeRemainingLabel = view.findViewById(R.id.tv_timer);
         memoryGrid = view.findViewById(R.id.memorama_grid);
 
-        initializeGame(view);
-        startCountdown();
+        // Verificar el permiso de Bluetooth directamente en onCreateView
+        if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            // Si no se tiene el permiso, solicitamos el permiso
+            requestBluetoothPermission();
+        } else {
+            // Si el permiso ya está concedido, continuar con la inicialización
+            initializeGameAndStartBluetoothConnection(view);
+        }
 
         return view;
     }
 
-    private void initializeGame(View view) {
+    private void initializeGameAndStartBluetoothConnection(View view) {
+        try {
+            // Inicializamos el juego
+            initializeGame(view);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        startCountdown();
+
+        // Verificar si Bluetooth está habilitado
+        if (bluetoothHelper.isBluetoothEnabled()) {
+            // Intentar conectar al dispositivo directamente
+            boolean conectado = bluetoothHelper.connectToDevice("McQueen");  // Asume que "McQueen" es el nombre del dispositivo
+            if (conectado) {
+                Toast.makeText(getContext(), "Conexión exitosa a EchoBand", Toast.LENGTH_SHORT).show();
+                bluetoothHelper.startListening();
+            } else {
+                Toast.makeText(getContext(), "Por favor, vincula tu EchoBand", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new FragmentEntremosEnCalor())
+                        .commit();
+            }
+        } else {
+            // Si Bluetooth no está habilitado, mostrar mensaje
+            Toast.makeText(getContext(), "Bluetooth no está habilitado. Por favor, actívalo.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void initializeGame(View view) throws IOException {
+
         // Mezclar cartas
         List<Integer> imageList = new ArrayList<>();
         for (int image : frontImages) {
@@ -116,6 +162,7 @@ public class FragmentMemorama extends Fragment {
                 // Aquí puedes usar una navegación o callback para manejar el "Juego terminado"
                 // Ejemplo con un callback al activity contenedor
                 if (getActivity() != null) {
+                    bluetoothHelper.disconnect();
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, new FragmentTerminado1())
                             .commit();
@@ -172,10 +219,61 @@ public class FragmentMemorama extends Fragment {
             countdownTimer.cancel();
             // Aquí puedes navegar al fragmento de "Ganado"
             if (getActivity() != null) {
+                ArrayList<Integer> processedData = bluetoothHelper.getProcessedData();
+                int maximo = processedData.get(0);
+                int minimo = processedData.get(0);
+                int suma = 0;
+                for (int dato : processedData){
+                    if (dato>maximo){
+                        maximo = dato;
+                    }
+
+                    if (dato<minimo){
+                        minimo = dato;
+                    }
+
+                    suma+=dato;
+                }
+
+                float promedio = suma/processedData.size();
+                int promedioRedondeado = Math.round(promedio);
+
+                SharedPreferences preferences = getActivity().getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("minimo", minimo);
+                editor.putInt("maximo", maximo);
+                editor.putInt("promedio", promedioRedondeado);
+                editor.apply();
+                bluetoothHelper.disconnect();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new FragmentGanado1())
                         .commit();
             }
         }
     }
+
+    private void requestBluetoothPermission() {
+        // Solicitar permisos
+        ActivityCompat.requestPermissions(
+                getActivity(),
+                new String[]{android.Manifest.permission.BLUETOOTH_CONNECT},
+                REQUEST_BLUETOOTH_PERMISSION
+        );
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_BLUETOOTH_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Si el permiso fue otorgado, proceder con la inicialización y conexión Bluetooth
+                initializeGameAndStartBluetoothConnection(getView());
+            } else {
+                // Si el permiso fue denegado, informar al usuario
+                Toast.makeText(getContext(), "Permiso Bluetooth necesario para continuar", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

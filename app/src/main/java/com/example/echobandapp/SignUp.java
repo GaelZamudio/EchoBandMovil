@@ -25,6 +25,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.sign_up);
+        SharedPreferences sharedPreferences = getSharedPreferences("EchoBandPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
 
         fragmentSignUp = findViewById(R.id.signUp);
 
@@ -98,7 +101,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private boolean existeUsuario(String nombre){
-        Base admin = new Base(this, "EchoBandDB", null, 1);
+        Base admin = new Base(this, "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
         Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE nombre = ?", new String[]{nombre});
 
@@ -114,7 +117,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private boolean estaRegistradoCorreo(String correo){
-        Base admin = new Base(this, "EchoBandDB", null, 1);
+        Base admin = new Base(this, "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
         Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE correo = ?", new String[]{correo});
 
@@ -130,7 +133,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void insertarUsuario(String nombre, String correo, String contrasena){
-        Base admin = new Base(this, "EchoBandDB", null, 1);
+        Base admin = new Base(this, "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
@@ -143,7 +146,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void guardarDatosPorNombre(String nombre, String contrasena, String correo){
-        Base admin = new Base(this, "EchoBandDB", null, 1);
+        Base admin = new Base(this, "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
 
         Cursor cursor = base.rawQuery("SELECT id_usuario FROM Usuario WHERE nombre = ?", new String[]{nombre});

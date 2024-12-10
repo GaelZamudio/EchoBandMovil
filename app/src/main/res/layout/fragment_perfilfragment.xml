@@ -27,11 +27,11 @@
             android:layout_height="100dp"
             android:src="@drawable/juanitobn"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/circle_background"
+            android:background="@drawable/rounded_background"
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tvNombreUsuario"
+            android:id="@+id/tvNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Juanito Pérez"
@@ -40,7 +40,7 @@
             android:layout_marginBottom="4dp" />
 
         <TextView
-            android:id="@+id/tvAliasUsuario"
+            android:id="@+id/tvCorreo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ElMasCrack"
@@ -55,7 +55,7 @@
             android:layout_marginBottom="16dp">
 
             <Button
-                android:id="@+id/btnLiga"
+                android:id="@+id/btnPuntos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2480 PUNTOS"
@@ -89,6 +89,17 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
+
+        <TextView
+                android:id="@+id/tvNoHayLogros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="#3E3E3E"
+                android:layout_marginBottom="16dp" />
 
         <ListView
             android:id="@+id/listViewLogros"

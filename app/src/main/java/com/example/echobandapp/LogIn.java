@@ -22,6 +22,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
+        SharedPreferences sharedPreferences = getSharedPreferences("EchoBandPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
 
         fragmentLogIn = findViewById(R.id.logIn);
 
@@ -50,7 +53,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                 String nombre = etNombreLogIn.getText().toString().trim();
                 String contrasena = etContrasenaLogIn.getText().toString().trim();
 
-                Base admin = new Base(this, "EchoBandDB", null, 1);
+                Base admin = new Base(this, "EchoBandDB", null, 4);
                 SQLiteDatabase base = admin.getWritableDatabase();
 
                 Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE nombre = ? AND contrasena = ?", new String[]{nombre, contrasena});
@@ -73,7 +76,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
     private void guardarDatos(String nombre, String contrasena){
         int id_usuario = 0;
-        Base admin = new Base(this, "EchoBandDB", null, 1);
+        Base admin = new Base(this, "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
 
         Cursor cursor = base.rawQuery("SELECT id_usuario, correo FROM Usuario WHERE nombre = ? AND contrasena = ?", new String[]{nombre, contrasena});

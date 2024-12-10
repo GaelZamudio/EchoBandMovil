@@ -33,7 +33,7 @@
                     android:textStyle="bold" />
 
             <TextView
-                    android:id="@+id/tvAlias"
+                    android:id="@+id/tvCorreo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ElMasCrack"
@@ -47,7 +47,7 @@
                 android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Puntos totales"
+                android:text="Concentración promedio (Por cada ejercicio realizado)"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="8dp" />
@@ -78,22 +78,23 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Focalización Visual"
+                    android:text="Memorización"
                     android:textSize="14sp"
                     android:layout_weight="1" />
 
             <ProgressBar
-                    android:id="@+id/progressFocalizacionVisual"
+                    android:id="@+id/progressMemorizacion"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="3"
                     android:progressTint="#7C3DD5"
                     android:progress="81"
+                    android:max="100"
                     android:layout_marginEnd="8dp" />
 
             <TextView
-                    android:id="@+id/tvFocalizacionVisualPorcentaje"
+                    android:id="@+id/tvMemorizacionPorcentaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="81%"
@@ -110,22 +111,23 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Desafíos con amigos"
+                    android:text="Rapidez"
                     android:textSize="14sp"
                     android:layout_weight="1" />
 
             <ProgressBar
-                    android:id="@+id/progressDesafios"
+                    android:id="@+id/progressRapidez"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
-            android:layout_weight="3"
-            android:progress="63"
-            android:progressTint="#D83CE3"
-            android:layout_marginEnd="8dp" />
+                    android:layout_weight="3"
+                    android:progress="63"
+                    android:max="100"
+                    android:progressTint="#D83CE3"
+                    android:layout_marginEnd="8dp" />
 
             <TextView
-                    android:id="@+id/tvDesafiosPorcentaje"
+                    android:id="@+id/tvRapidezPorcentaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="63%"
@@ -143,57 +145,26 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Focalización General"
+                    android:text="Retención"
                     android:textSize="14sp"
                     android:layout_weight="1" />
 
             <ProgressBar
-                    android:id="@+id/progressFocalizacionGeneral"
+                    android:id="@+id/progressRetencion"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
-            android:progressTint="#3DD568"
-            android:layout_weight="3"
-            android:progress="52"
-            android:layout_marginEnd="8dp" />
+                    android:progressTint="#3DD568"
+                    android:layout_weight="3"
+                    android:progress="52"
+                    android:max="100"
+                    android:layout_marginEnd="8dp" />
 
             <TextView
-                    android:id="@+id/tvFocalizacionGeneralPorcentaje"
+                    android:id="@+id/tvRetencionPorcentaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="52%"
-                    android:textSize="14sp" />
-        </LinearLayout>
-
-        <!-- Progreso de Concentración Real -->
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Concentración Real"
-                    android:textSize="14sp"
-                    android:layout_weight="1" />
-
-            <ProgressBar
-                    android:id="@+id/progressConcentracion"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-            android:layout_weight="3"
-            android:progressTint="#3DA0D5"
-            android:progress="47"
-            android:layout_marginEnd="8dp" />
-
-            <TextView
-                    android:id="@+id/tvConcentracionPorcentaje"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="47%"
                     android:textSize="14sp" />
         </LinearLayout>
 

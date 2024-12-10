@@ -1,5 +1,7 @@
 package com.example.echobandapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,6 +28,9 @@ public class FragmentSimonDice extends Fragment {
     private int currentRound = 1;
     private int currentInputIndex = 0;
     private Handler handler = new Handler();
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    BluetoothHelper bluetoothHelper;
 
     @Nullable
     @Override
@@ -42,6 +48,28 @@ public class FragmentSimonDice extends Fragment {
         arrowDown.setOnClickListener(v -> handleInput("ABAJO"));
         arrowLeft.setOnClickListener(v -> handleInput("IZQUIERDA"));
         arrowRight.setOnClickListener(v -> handleInput("DERECHA"));
+
+        preferences = getActivity().getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+        bluetoothHelper = new BluetoothHelper(getActivity(), null);
+        editor = preferences.edit();
+
+        // Verificar si Bluetooth está habilitado
+        if (bluetoothHelper.isBluetoothEnabled()) {
+            // Intentar conectar al dispositivo directamente
+            boolean conectado = bluetoothHelper.connectToDevice("McQueen");  // Asume que "McQueen" es el nombre del dispositivo
+            if (conectado) {
+                Toast.makeText(getContext(), "Conexión exitosa a EchoBand", Toast.LENGTH_SHORT).show();
+                bluetoothHelper.startListening();
+            } else {
+                Toast.makeText(getContext(), "Por favor, vincula tu EchoBand", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new FragmentConCalma())
+                        .commit();
+            }
+        } else {
+            // Si Bluetooth no está habilitado, mostrar mensaje
+            Toast.makeText(getContext(), "Bluetooth no está habilitado. Por favor, actívalo.", Toast.LENGTH_SHORT).show();
+        }
 
         startGame();
 
@@ -63,7 +91,7 @@ public class FragmentSimonDice extends Fragment {
         generateSequence();
 
         // Retraso inicial de 4 segundos antes de mostrar la primera instrucción
-        handler.postDelayed(this::showSequence, 4000);
+        handler.postDelayed(this::showSequence, 2000);
     }
 
     private void generateSequence() {
@@ -115,11 +143,36 @@ public class FragmentSimonDice extends Fragment {
             currentInputIndex++;
 
             if (currentInputIndex == sequence.size()) {
-                if (currentRound == 10) { // Límite de rondas para "ganar"
+                if (currentRound == 5) { // Límite de rondas para "ganar"
                     messageText.setText("¡Correcto! Has completado todas las rondas.");
                     handler.postDelayed(() -> {
                         // Navegar al fragmento de "ganado"
                         if (getActivity() != null) {
+                            ArrayList<Integer> processedData = bluetoothHelper.getProcessedData();
+                            int maximo = processedData.get(0);
+                            int minimo = processedData.get(0);
+                            int suma = 0;
+                            for (int dato : processedData) {
+                                if (dato > maximo) {
+                                    maximo = dato;
+                                }
+
+                                if (dato < minimo) {
+                                    minimo = dato;
+                                }
+                                suma += dato;
+                            }
+
+                            float promedio = suma / processedData.size();
+                            int promedioRedondeado = Math.round(promedio);
+
+                            SharedPreferences preferences = getActivity().getSharedPreferences("EchoBandPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("minimo", minimo);
+                            editor.putInt("maximo", maximo);
+                            editor.putInt("promedio", promedioRedondeado);
+                            editor.apply();
+                            bluetoothHelper.disconnect();
                             getActivity().getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.fragment_container, new FragmentGanado3())
                                     .commit();
@@ -128,7 +181,7 @@ public class FragmentSimonDice extends Fragment {
                 } else {
                     messageText.setText("¡Correcto! Siguiente ronda.");
                     currentRound++;
-                    handler.postDelayed(this::nextRound, 3000);
+                    handler.postDelayed(this::nextRound, 2000);
                 }
             }
         }
