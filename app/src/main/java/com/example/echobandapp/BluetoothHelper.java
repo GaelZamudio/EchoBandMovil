@@ -132,8 +132,11 @@ public class BluetoothHelper {
         ArrayList<Integer> roundedValues = new ArrayList<>();
 
         for (float value : values) {
-            // Redondear y hacer el cast a int
-            roundedValues.add(Math.round(value));
+            if (value>2 && value<100){
+                // Redondear y hacer el cast a int
+                roundedValues.add(Math.round(value));
+            }
+
         }
 
         return roundedValues;

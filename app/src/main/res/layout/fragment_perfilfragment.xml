@@ -27,7 +27,7 @@
             android:layout_height="100dp"
             android:src="@drawable/juanitobn"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/circle_background"
+            android:background="@drawable/rounded_background"
             android:scaleType="centerCrop" />
 
         <TextView

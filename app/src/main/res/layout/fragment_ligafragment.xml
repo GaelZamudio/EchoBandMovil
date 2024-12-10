@@ -14,6 +14,17 @@
         android:layout_marginTop="5dp">
 
         <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Este módulo se encuentra en desarrollo (6to semestre)"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textSize="26sp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="LIGA DIAMANTE-Meta: 5000 pts"

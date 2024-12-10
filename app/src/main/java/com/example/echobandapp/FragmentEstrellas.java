@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class FragmentEstrellas extends Fragment {
-
+    private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,7 +28,16 @@ public class FragmentEstrellas extends Fragment {
                     .addToBackStack(null) // Permite regresar al FragmentEstrellas
                     .commit();
         });
-
+        requestBluetoothPermission();
         return view;
+    }
+
+    private void requestBluetoothPermission() {
+        // Solicitar permisos
+        ActivityCompat.requestPermissions(
+                getActivity(),
+                new String[]{android.Manifest.permission.BLUETOOTH_CONNECT},
+                REQUEST_BLUETOOTH_PERMISSION
+        );
     }
 }

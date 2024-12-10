@@ -1,5 +1,6 @@
 package com.example.echobandapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentGanado2 extends Fragment {
-TextView tvMaximo, tvMinimo, tvPromedio;
+TextView tvMaximo, tvMinimo, tvPromedio, tvPuntos;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,8 +74,14 @@ TextView tvMaximo, tvMinimo, tvPromedio;
             puntos = 5;
         }
         //INICIAMOS LA BASE
-        Base base = new Base(getContext(), "EchoBandDB", null, 1);
-        base.insertarLogro(id_usuario, "Listo para la F1");
+        Base base = new Base(getContext(), "EchoBandDB", null, 4);
+
+        if (tiempoReaccion<0.35){
+            base.insertarLogro(id_usuario, "¿Max Verstappen?");
+        } else {
+            base.insertarLogro(id_usuario, "Listo para la F1");
+        }
+
         base.actualizarRacha(id_usuario);
 
         base.insertarEntrenamiento(id_usuario,promedio, "Rapidez");
@@ -86,10 +94,14 @@ TextView tvMaximo, tvMinimo, tvPromedio;
         tvMaximo = rootView.findViewById(R.id.tvMaximo);
         tvMinimo = rootView.findViewById(R.id.tvMinimo);
         tvPromedio = rootView.findViewById(R.id.tvPromedio);
+        tvPuntos = rootView.findViewById(R.id.tv_puntos);
+
 
         tvMaximo.setText("- Nivel máximo de concentración: "+maximo);
         tvMinimo.setText("- Nivel más bajo de concentración: "+minimo);
         tvPromedio.setText("- Concentración promedio: "+promedio);
+        String puntostxt = "+"+puntos+" a tu perfil";
+        tvPuntos.setText(puntostxt);
         return rootView;
     }
 }

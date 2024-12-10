@@ -144,7 +144,7 @@ public class FragmentConfiguracion extends Fragment implements View.OnClickListe
             }
 
             // Actualizar datos en la base de datos
-            Base base = new Base(getContext(), "EchoBandDB", null, 1);
+            Base base = new Base(getContext(), "EchoBandDB", null, 4);
             base.actualizarUsuario(id_usuario, nuevoNombre, nuevoCorreo, nuevaContrasena);
 
             // Actualizar preferencias
@@ -182,7 +182,7 @@ public class FragmentConfiguracion extends Fragment implements View.OnClickListe
     }
 
     private boolean existeUsuario(String nombre){
-        Base admin = new Base(getContext(), "EchoBandDB", null, 1);
+        Base admin = new Base(getContext(), "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
         Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE nombre = ?", new String[]{nombre});
 
@@ -198,7 +198,7 @@ public class FragmentConfiguracion extends Fragment implements View.OnClickListe
     }
 
     private boolean estaRegistradoCorreo(String correo){
-        Base admin = new Base(getContext(), "EchoBandDB", null, 1);
+        Base admin = new Base(getContext(), "EchoBandDB", null, 4);
         SQLiteDatabase base = admin.getWritableDatabase();
         Cursor cursor = base.rawQuery("SELECT * FROM Usuario WHERE correo = ?", new String[]{correo});
 

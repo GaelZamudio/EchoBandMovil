@@ -95,7 +95,10 @@ public class FragmentMemorama extends Fragment {
                 Toast.makeText(getContext(), "Conexión exitosa a EchoBand", Toast.LENGTH_SHORT).show();
                 bluetoothHelper.startListening();
             } else {
-                Toast.makeText(getContext(), "No se pudo conectar a EchoBand", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Por favor, vincula tu EchoBand", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new FragmentEntremosEnCalor())
+                        .commit();
             }
         } else {
             // Si Bluetooth no está habilitado, mostrar mensaje
@@ -159,6 +162,7 @@ public class FragmentMemorama extends Fragment {
                 // Aquí puedes usar una navegación o callback para manejar el "Juego terminado"
                 // Ejemplo con un callback al activity contenedor
                 if (getActivity() != null) {
+                    bluetoothHelper.disconnect();
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, new FragmentTerminado1())
                             .commit();
@@ -241,7 +245,6 @@ public class FragmentMemorama extends Fragment {
                 editor.putInt("promedio", promedioRedondeado);
                 editor.apply();
                 bluetoothHelper.disconnect();
-                Toast.makeText(getContext(), String.valueOf(processedData.get(1)), Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new FragmentGanado1())
                         .commit();

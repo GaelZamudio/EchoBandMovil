@@ -66,6 +66,7 @@
         android:textSize="16sp"
         android:textColor="#373737"
         android:layout_gravity="center"
+        android:id="@+id/tv_puntos"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="10dp" />
 

@@ -11,11 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import org.w3c.dom.Text;
+
 
 public class Barra extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener, FragmentConfiguracion.OnPerfilUpdatedListener {
@@ -27,6 +29,7 @@ public class Barra extends AppCompatActivity implements
     private static final int NAV_ESTAD = R.id.nav_estadisticas;
     private static final int NAV_LIGA = R.id.nav_liga;
     private static final int NAV_PERFIL = R.id.nav_perfil;
+    private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
     private DrawerLayout drawerLayout;
     TextView tvNombre, tvCorreo;
 

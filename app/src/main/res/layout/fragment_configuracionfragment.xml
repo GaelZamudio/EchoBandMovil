@@ -23,7 +23,6 @@
                 android:layout_height="100dp"
                 android:src="@drawable/juanitobn"
                 android:contentDescription="Agregar foto"
-                android:background="@drawable/circle_background"
                 android:padding="8dp" />
 
             <TextView
@@ -43,13 +42,6 @@
                 android:text="ElMasCrack"
                 android:textColor="#888"
                 android:textSize="14sp" />
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cambiar foto"
-                    android:backgroundTint="@color/my_light_primary"
-                    android:id="@+id/btnCambiarFoto"/>
         </LinearLayout>
 
         <LinearLayout

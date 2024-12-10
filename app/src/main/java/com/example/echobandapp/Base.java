@@ -3,9 +3,11 @@ package com.example.echobandapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -47,8 +49,6 @@ public class Base extends SQLiteOpenHelper {
         }
 
     }
-
-
 
     public void insertarEntrenamiento(int id_usuario, int concentracion_promedio, String tipo_ejercicio) {
         SQLiteDatabase base = this.getWritableDatabase();
@@ -186,10 +186,67 @@ public class Base extends SQLiteOpenHelper {
         base.update("Usuario", registro, "id_usuario = ?", new String[]{String.valueOf(id_usuario)});
     }
 
+    public ArrayList<Integer> obtenerConcentraciones(int idUsuario, int limite) {
+        ArrayList<Integer> concentraciones = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT concentracion_promedio FROM Entrenamiento WHERE id_usuario = ? LIMIT ?",
+                new String[]{String.valueOf(idUsuario), String.valueOf(limite)}
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                concentraciones.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return concentraciones;
+    }
+
+    public int obtenerEntrenamientosPorTipo(int id_usuario, String tipoEjercicio) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM Entrenamiento WHERE id_usuario = ? AND tipo_ejercicio = ?";
+        String[] args = {String.valueOf(id_usuario), tipoEjercicio};
+        int count = 0;
+
+        try (Cursor cursor = db.rawQuery(query, args)) {
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        }
+
+        return count;
+    }
+
+    public int obtenerTotalEntrenamientos(int id_usuario) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM Entrenamiento WHERE id_usuario = ?";
+        String[] args = {String.valueOf(id_usuario)};
+        int total = 0;
+
+        try (Cursor cursor = db.rawQuery(query, args)) {
+            if (cursor.moveToFirst()) {
+                total = cursor.getInt(0);
+            }
+        }
+
+        return total;
+    }
+
+
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Elimina las tablas si ya existen
+        db.execSQL("DROP TABLE IF EXISTS Usuario");
+        db.execSQL("DROP TABLE IF EXISTS Logro");
+        db.execSQL("DROP TABLE IF EXISTS Entrenamiento");
 
+        // Vuelve a crear las tablas
+        onCreate(db);
     }
+
 }

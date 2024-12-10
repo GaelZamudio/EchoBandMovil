@@ -61,7 +61,7 @@ TextView tvMaximo, tvMinimo, tvPromedio;
         int promedio = preferences.getInt("promedio", 0);
 
         //INICIAMOS LA BASE
-        Base base = new Base(getContext(), "EchoBandDB", null, 1);
+        Base base = new Base(getContext(), "EchoBandDB", null, 4);
         base.insertarLogro(id_usuario, "Memorizando...");
         base.actualizarRacha(id_usuario);
 

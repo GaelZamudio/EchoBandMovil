@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class FragmentPerfil extends Fragment {
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class FragmentPerfil extends Fragment {
         tvCorreo.setText(correo);
 
         //INICIAMOS LA BASE
-        Base base = new Base(getContext(), "EchoBandDB", null, 1);
+        Base base = new Base(getContext(), "EchoBandDB", null, 4);
 
         //OBTENEMOS LOS PUNTOS Y LOS MOSTRAMOS
         int puntos = base.obtenerPuntos(id_usuario);
@@ -75,11 +75,16 @@ public class FragmentPerfil extends Fragment {
 
         //OBTENEMOS LA RACHA Y LA MOSTRAMOS
         int racha = base.obtenerRacha(id_usuario);
-        btnRacha.setText("RACHA DE "+racha+" DÍAS");
+        if (racha < 2){
+            btnRacha.setText("RACHA DE "+racha+" DÍA");
+        } else {
+            btnRacha.setText("RACHA DE "+racha+" DÍAS");
+        }
+
 
         //OBTENEMOS LA CANTIDAD DE LOGROS Y LA MOSTRAMOS
         int cantLogros = base.obtenerCantidadLogros(id_usuario);
-        btnLogros.setText(cantLogros+"/10 LOGROS");
+        btnLogros.setText(cantLogros+"/4 LOGROS");
 
         //OBTENEMOS LOS LOGROS DEL USUARIO Y LOS MOSTRAMOS
         String[] logrosUsuario = base.obtenerTitulosLogros(id_usuario);
